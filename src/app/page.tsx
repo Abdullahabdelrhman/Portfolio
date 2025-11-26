@@ -146,6 +146,9 @@ const Portfolio = () => {
         <div className="absolute -bottom-32 left-1/2 w-96 h-96 bg-purple-600/30 rounded-full mix-blend-screen filter blur-[100px] animate-blob animation-delay-4000"></div>
 
         <div className="text-center z-10 max-w-4xl mx-auto space-y-8">
+          
+          {/* Image Removed */}
+
           <div className="inline-block px-4 py-1.5 rounded-full border border-cyan-500/30 bg-cyan-500/10 backdrop-blur-sm text-cyan-300 text-sm font-medium mb-4 animate-fade-in-up hover:scale-105 transition-transform cursor-default shadow-[0_0_10px_rgba(34,211,238,0.2)]">
             <span className="w-2 h-2 bg-cyan-400 rounded-full inline-block mr-2 animate-pulse"></span>
             Available for Freelance & Hire
