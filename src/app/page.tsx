@@ -442,7 +442,7 @@ const Portfolio = () => {
                 </div>
                 <div className="text-left">
                   <div className="text-xs text-slate-500 uppercase tracking-wider font-semibold">LinkedIn</div>
-                  <div className="text-lg">Let's Connect</div>
+                  <div className="text-lg">Let&apos;s Connect</div>
                 </div>
               </a>
             </div>
