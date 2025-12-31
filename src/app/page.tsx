@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 
 import React, { useState, useEffect, useRef , ReactNode } from "react";
 import {
@@ -236,9 +237,12 @@ const Portfolio = () => {
           <div className="animate-float">
             <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 mb-8 mx-auto shadow-[0_0_50px_rgba(34,211,238,0.3)]">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-[#0f172a] relative">
-                <img
+                <Image
                   src="/profile.jpg"
                   alt="Profile"
+                  width={224}
+                  height={224}
+                  priority
                   className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                 />
               </div>
@@ -254,7 +258,7 @@ const Portfolio = () => {
           </div>
 
           <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight text-white mb-4 drop-shadow-lg">
-            Hi, I'm <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient-x">{personalInfo.name}</span>
+            Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient-x">{personalInfo.name}</span>
           </h1>
 
           <div className="h-12 flex justify-center items-center overflow-hidden">
@@ -394,9 +398,9 @@ const Portfolio = () => {
 
         <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
           <RevealOnScroll>
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Let's <span className="text-cyan-400">Connect</span></h2>
+            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">Let&apos;s <span className="text-cyan-400">Connect</span></h2>
             <p className="text-slate-400 text-lg mb-16 max-w-2xl mx-auto">
-              Interested in collaborating or just want to say hi? I'm always open to discussing new projects and creative ideas.
+              Interested in collaborating or just want to say hi? I&apos;m always open to discussing new projects and creative ideas.
             </p>
 
             <div className="flex flex-col md:flex-row justify-center gap-6 items-center">
