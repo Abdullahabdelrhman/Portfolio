@@ -26,21 +26,25 @@ const RevealOnScroll = ({ children, delay = 0 }: RevealOnScrollProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
+useEffect(() => {
+  const currentRef = ref.current;
 
-    if (ref.current) observer.observe(ref.current);
+  if (!currentRef) return;
 
-    return () => observer.disconnect();
-  }, []);
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.unobserve(currentRef);
+      }
+    },
+    { threshold: 0.1 }
+  );
+
+  observer.observe(currentRef);
+
+  return () => observer.disconnect();
+}, []);
 
   return (
     <div
@@ -60,17 +64,23 @@ const Portfolio = () => {
   const fullText = "Front-End Developer";
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
-   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
+ useEffect(() => {
+  let frameId: number;
+
+  const handleMouseMove = (e: MouseEvent) => {
+    cancelAnimationFrame(frameId);
+    frameId = requestAnimationFrame(() => {
       setMousePos({ x: e.clientX, y: e.clientY });
-    };
+    });
+  };
 
-    window.addEventListener("mousemove", handleMouseMove);
+  window.addEventListener("mousemove", handleMouseMove);
 
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+    cancelAnimationFrame(frameId);
+  };
+}, []);
 
   useEffect(() => {
     let index = 0;
@@ -237,14 +247,15 @@ const Portfolio = () => {
           <div className="animate-float">
             <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 mb-8 mx-auto shadow-[0_0_50px_rgba(34,211,238,0.3)]">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-[#0f172a] relative">
-                <Image
-                  src="/profile.jpg"
-                  alt="Profile"
-                  width={224}
-                  height={224}
-                  priority
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                />
+               <Image
+  src="/profile.jpg"
+  alt="Profile"
+  width={224}
+  height={224}
+  priority
+  sizes="(max-width: 768px) 176px, 224px"
+  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+/>
               </div>
             </div>
           </div>
