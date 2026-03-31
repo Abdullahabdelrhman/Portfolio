@@ -248,7 +248,7 @@ const Portfolio = () => {
             <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-tr from-cyan-400 via-blue-500 to-purple-600 mb-8 mx-auto shadow-[0_0_50px_rgba(34,211,238,0.3)]">
               <div className="w-full h-full rounded-full overflow-hidden border-4 border-[#0f172a] relative">
                <Image
-  src="/profile.jpg"
+  src="/profile.png"
   alt="Profile"
   width={224}
   height={224}
