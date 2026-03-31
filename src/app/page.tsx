@@ -104,7 +104,7 @@ const Portfolio = () => {
     name: "Abdullah Abdelrhman",
     email: "bb7904990@gmail.com",
     phone: "+01098958697",
-    linkedin: "https://www.linkedin.com/in/abdullh-abdelrhman-2b2452266",
+    linkedin: "https://www.linkedin.com/in/abdullah-abdelrhman-2b2452266?utm_source=share_via&utm_content=profile&utm_medium=member_ios",
     github: "https://github.com/Abdullahabdelrhman",
     about:
       "Passionate Front-End Developer crafting responsive, user-centric web applications. I blend technical expertise in React & TypeScript with modern design principles to build digital experiences that live on the web.",
