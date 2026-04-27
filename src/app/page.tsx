@@ -18,33 +18,35 @@ import {
   Layout,
   ExternalLink 
 } from "lucide-react";
+
 interface RevealOnScrollProps {
   children: ReactNode;
   delay?: number;
 }
+
 const RevealOnScroll = ({ children, delay = 0 }: RevealOnScrollProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
 
-useEffect(() => {
-  const currentRef = ref.current;
+  useEffect(() => {
+    const currentRef = ref.current;
 
-  if (!currentRef) return;
+    if (!currentRef) return;
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting) {
-        setIsVisible(true);
-        observer.unobserve(currentRef);
-      }
-    },
-    { threshold: 0.1 }
-  );
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(currentRef);
+        }
+      },
+      { threshold: 0.1 }
+    );
 
-  observer.observe(currentRef);
+    observer.observe(currentRef);
 
-  return () => observer.disconnect();
-}, []);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
@@ -58,29 +60,30 @@ useEffect(() => {
     </div>
   );
 };
+
 const Portfolio = () => {
   const [scrolled, setScrolled] = useState(false);
   const [text, setText] = useState("");
   const fullText = "Front-End Developer";
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
- useEffect(() => {
-  let frameId: number;
+  useEffect(() => {
+    let frameId: number;
 
-  const handleMouseMove = (e: MouseEvent) => {
-    cancelAnimationFrame(frameId);
-    frameId = requestAnimationFrame(() => {
-      setMousePos({ x: e.clientX, y: e.clientY });
-    });
-  };
+    const handleMouseMove = (e: MouseEvent) => {
+      cancelAnimationFrame(frameId);
+      frameId = requestAnimationFrame(() => {
+        setMousePos({ x: e.clientX, y: e.clientY });
+      });
+    };
 
-  window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
 
-  return () => {
-    window.removeEventListener("mousemove", handleMouseMove);
-    cancelAnimationFrame(frameId);
-  };
-}, []);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      cancelAnimationFrame(frameId);
+    };
+  }, []);
 
   useEffect(() => {
     let index = 0;
@@ -161,6 +164,29 @@ const Portfolio = () => {
       demo: "#",
       repo: "#",
       color: "from-orange-500 to-yellow-500",
+    },
+    {
+      title: "Modern E-Commerce Store",
+      category: "E-Commerce",
+      description:
+        "A fully responsive modern e-commerce platform with product browsing, shopping cart, and seamless checkout experience. Built with Next.js for optimal performance and SEO, deployed on Vercel.",
+      tech: ["Next.js", "React", "Tailwind CSS", "Vercel"],
+      demo: "https://store-tau-beryl.vercel.app/",
+      repo: "https://github.com/Abdullahabdelrhman",
+      color: "from-purple-600 to-pink-500",
+    },
+    // ==========================================
+    // 🆕 مشروع أكاديمية النور الجديد
+    // ==========================================
+    {
+      title: "أكاديمية النور العالمية",
+      category: "Quran Academy",
+      description:
+        "A professional online platform dedicated to teaching Quran to children in a creative and engaging way. Features include certified teachers, interactive booking system, real-time student counter, and discount coupons. Fully responsive with a spiritual and modern design.",
+      tech: ["React", "Tailwind CSS", "Vercel", "Arabic UI"],
+      demo: "https://quran-academy-phi.vercel.app/",
+      repo: "https://github.com/Abdullahabdelrhman", // تحدث الرابط إذا كان لديك رابط الـ repo
+      color: "from-emerald-600 to-teal-500", // ألوان تتناسب مع الطابع الإسلامي
     },
   ];
 
@@ -261,15 +287,17 @@ const Portfolio = () => {
           </div>
 
           <div className="inline-block px-6 py-2 rounded-full border border-cyan-500/30 bg-cyan-500/5 backdrop-blur-md text-cyan-300 text-sm font-medium mb-4 shadow-[0_0_15px_rgba(34,211,238,0.1)] hover:shadow-[0_0_25px_rgba(34,211,238,0.2)] transition-shadow cursor-default">
-            <span className="relative flex h-3 w-3  mr-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+            <span className="relative flex items-center gap-2">
+              <span className="relative flex h-3 w-3">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span>
+              </span>
+              Available for Freelance & Hire
             </span>
-            Available for Freelance & Hire
           </div>
 
           <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight text-white mb-4 drop-shadow-lg">
-            Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600 animate-gradient-x">{personalInfo.name}</span>
+            Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-600">{personalInfo.name}</span>
           </h1>
 
           <div className="h-12 flex justify-center items-center overflow-hidden">
